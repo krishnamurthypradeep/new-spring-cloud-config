@@ -30,11 +30,20 @@ spring:
 #   jpa:
 #    show-sql: true
 
+# spring:
+#   datasource:
+#     platform: 
+#     url: jdbc:postgresql://localhost:5432/microservice
+#     username: postgres
+#     password: admin
+#   jpa:
+#    show-sql: true
+#    hibernate.ddl-auto: update
+---
 spring:
   datasource:
-    platform: 
-    url: jdbc:postgresql://localhost:5432/microservice
-    username: postgres
+    url: jdbc:mysql://localhost:3306/microservice
+    username: admin
     password: admin
   jpa:
    show-sql: true
