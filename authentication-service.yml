@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 9300
+      discovery:
+        instanceId: ${spring.application.name}
+        hostname: localhost
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+        
