@@ -1,0 +1,37 @@
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 9300
+      discovery:
+        instanceId: ${spring.application.name}
+        hostname: localhost
+
+--- 
+spring:
+  cloud:
+    loadbalancer.ribbon.enabled: true
+    gateway:
+        routes:
+        - id: application-service
+          uri: lb://application-service
+          predicates:
+          - Path=/application/**
+          filters:
+          - RewritePath=/users/(?<path>.*), /$\{path}
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+          - Path=/users/**
+          filters:
+          - RewritePath=/users/(?<path>.*), /$\{path}
+
+
+       
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+        
